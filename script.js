@@ -91,10 +91,14 @@ function checkAnswer() {
     }
 }
 
-// Event listener for the "Submit" button
+// "Submit" button
 const submitButton = document.getElementById("submit");
 submitButton.addEventListener("click", checkAnswer);
 
 // Start the quiz
-loadQuestion();
-startTimer();
+const startButton = document.getElementById("start");
+startButton.addEventListener("click", () => {
+    startButton.style.display = "none"; // Hide the start button
+    loadQuestion(); // Load the first question
+    startTimer(); // Start the timer
+});
