@@ -1,5 +1,4 @@
-  // Quiz questions and answers
-  const quizData = [
+const quizData = [
     {
         question: "Question 1: Who started a fire in the office?",
         options: ["Toby", "Jim", "Ryan", "Pam"],
@@ -70,6 +69,7 @@ function endQuiz() {
     resultElement.textContent = "Quiz completed! Your score is: " + score;
 }
 
+
 // Function to check the selected answer
 function checkAnswer() {
     const selectedOption = document.querySelector("input[name=answer]:checked");
@@ -78,8 +78,9 @@ function checkAnswer() {
     const userAnswer = selectedOption.value;
     const currentQuizData = quizData[currentQuestion];
 
-    if (userAnswer === currentQuizData.answer) {
-        score++;
+    if (userAnswer === "option" + (currentQuizData.options.indexOf(currentQuizData.answer) + 1)) {
+        // If the user's answer is correct, add 25 points to the score
+        score += 25;
     }
 
     currentQuestion++;
@@ -91,14 +92,17 @@ function checkAnswer() {
     }
 }
 
-// "Submit" button
+
+
+// Event listener for the "Submit" button
 const submitButton = document.getElementById("submit");
 submitButton.addEventListener("click", checkAnswer);
 
+
+
 // Start the quiz
-const startButton = document.getElementById("start");
-startButton.addEventListener("click", () => {
-    startButton.style.display = "none"; // Hide the start button
-    loadQuestion(); // Load the first question
-    startTimer(); // Start the timer
-});
+loadQuestion();
+startTimer()
+
+
+
